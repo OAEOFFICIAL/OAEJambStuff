@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale= 0.577">
+    <title>OAE JAMB Timetable 2025</title>
+    <style>
+        /* CSS styling here */
+    /* Global Styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f4f8;
+        color: #333;
+    }
+
+    header {
+        background-color: green;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        margin-bottom: 20px;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+
+    header p {
+        margin: 0;
+        font-size: 1.2em;
+    }
+
+    /* Form Section */
+    #student-info {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #student-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #student-form label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    #student-form input,
+    #student-form select,
+    #student-form button {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1em;
+    }
+
+    #student-form button {
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    #student-form button:hover {
+        background-color: ;
+    }
+
+    /* Timetable Section */
+    #timetable-display {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #timetable-display h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #timetable-body {
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table th, table td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+
+    table th {
+        background-color: #007BFF;
+        color: white;
+    }
+
+    /* Instructions Section */
+    #instructions {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #instructions h3 {
+        margin-bottom: 15px;
+    }
+
+    #instructions ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    /* Footer Section */
+/* Footer Styles */
+footer {
+    background-color: green; /* Dark green background */
+    color: #fff;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Aligns items at the top */
+    flex-wrap: wrap; /* Makes it responsive on smaller screens */
+    gap: 20px;
+}
+.footer-container a{
+    color: yellow;
+}
+.footer-container a:hover{
+    color: orange;
+}
+.footer-logo {
+    flex: 1;
+    max-width: 250px; /* Sets max width for logo section */
+}
+
+.footer-logo img {
+    width: 100px; /* Adjust logo size */
+    margin-bottom: 15px;
+}
+
+.footer-logo p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.footer-links, .footer-resources, .footer-social {
+    flex: 1;
+    max-width: 250px;
+}
+
+.footer-links h4, .footer-resources h4, .footer-social h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+footer nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin: 8px 0;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #ddd;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+footer h4:hover{
+    color: orangered;
+}
+footer h4{
+    color: orange;
+}
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        text-align: center;
+    }
+
+    .footer-links, .footer-resources, .footer-social {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+footer img{
+    Width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+    /* Popup for WhatsApp Group */
+.popup {
+    border: 1.9px solid green;
+    display: none; /* Initially hidden */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    color: darkgreen;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.88);
+    width: 50%;
+    opacity: 0; /* Start with zero opacity for fade-in effect */
+    transform: translateX(100%); /* Start off-screen to the right */
+    animation: slideIn 1s ease-out forwards, fadeIn 1s forwards; /* Apply both animations */
+}
+
+/* Animation for the popup sliding in */
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%); /* Start from right off-screen */
+    }
+    100% {
+        transform: translateX(0); /* Slide in to the normal position */
+    }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* Start with opacity 0 */
+    }
+    100% {
+        opacity: 1; /* Fade to fully visible */
+    }
+}
+
+/* Hover effects for glowing and scaling */
+.popup:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7); /* Glowing effect */
+    transform: scale(1.05); /* Slightly enlarge the popup */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Close button styling */
+.popup button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.popup button:hover {
+    background-color: darkgreen;
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+#instructions {
+    background-color: #f4f9f4; /* Light green background for freshness */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for emphasis */
+    width: 80%; /* Adjusts the width of the section */
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, sans-serif;
+}
+
+#instructions h3 {
+    font-size: 24px;
+    color: #2e7d32; /* Dark green for the heading */
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+#instructions ul {
+    list-style-type: none; /* Removes default bullet points */
+    padding-left: 0;
+}
+
+#instructions ul li {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+#instructions ul li::before {
+    content: "✔️"; /* Adds a check mark emoji before each item */
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+}
+
+#instructions ul li a {
+    color: #2e7d32; /* Link color matches the heading */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#instructions ul li a:hover {
+    color: #388e3c; /* Slightly darker green on hover */
+    text-decoration: underline;
+}
+
+#instructions ul li strong {
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>OAE JAMB Timetable 2025</h1>
+        <p>Plan your exams with ease.</p>
+    </header>
+
+    <!-- Student Information Form -->
+    <section id="student-info">
+        <form id="student-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="group">Academic Group:</label>
+            <select id="group" name="group" required>
+                <option value="">Select Group</option>
+                <option value="science">Science</option>
+                <option value="art">Art</option>
+                <option value="commercial">Commercial</option>
+            </select>
+
+            <label for="course">Course of Study:</label>
+            <select id="course" name="course" required>
+                <option value="">Select Course</option>
+            </select>
+
+            <label for="email">Contact Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <button type="submit">Generate Timetable</button>
+        </form>
+    </section>
+
+    <!-- Timetable Display Section -->
+    <section id="timetable-display" style="display: none;">
+        <h2>Timetable for <span id="student-name"></span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Subject</th>
+                    <th>Venue</th>
+                </tr>
+            </thead>
+            <tbody id="timetable-body">
+                <!-- Dynamic content will be inserted here -->
+            </tbody>
+        </table>
+        <div class="actions">
+            <button id="download-pdf">Download as PDF</button>
+            <button id="print-timetable">Print Timetable</button>
+        </div>
+    </section>
+
+    <!-- Additional Instructions Section -->
+<section id="instructions">
+    <h3>Important Information for JAMBites</h3>
+    <ol>
+        <li>Ensure that you have successfully generated your JAMB profile code before the registration begins. 🔑</li>
+        <li>Keep your JAMB profile details (phone number, email, and NIN) handy for easy access during registration. 📱📧</li>
+        <li>Make sure to check your JAMB registration slip for important details such as exam venue and time. 🏫⏰</li>
+        <li>Prepare early and study your JAMB syllabi to ensure you're well-prepared for your exam. 📚💡</li>
+        <li>Join the official <strong><a href="https://whatsapp.com/channel/0029VakYvdGBPzja0pE8OC3G" target="_blank">OAE JAMB WhatsApp Group</a></strong> for real-time updates, tips, and discussions with fellow JAMBites. 📱💬</li>
+        <li>Stay informed about important dates such as the start of the UTME registration, exam dates, and other vital updates. 📅</li>
+        <li>Remember, only candidates who meet all requirements will be eligible for the UTME exam. Ensure your documents and details are accurate. ✅</li>
+        <li>Don't forget to bring your valid ID and JAMB exam slip on the exam day. 🆔📄</li>
+        <li>Stay calm and confident! Prepare well, and success will follow. 💪😊</li>
+    </ol>
+</section>
+    <!-- Footer Section -->
+<footer>
+    <div class="footer-container">
+        <!-- Logo and Site Description -->
+        <div class="footer-logo">
+            <a href="https://whatsapp.com/channel/0029VaiCEq1AjPXRzzB34H25"><img src="oaepic.webp" alt="Logo" /></a>
+            <p>Your go-to platform for educational resources and updates for JAMB, WAEC, and beyond.</p>
+        </div>
+        
+        <!-- Useful Links Section -->
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="https://wa.me/message/ICCLO6DMU3EGH1">Contact Us</a>
+                <a href="#support.html">Support</a>
+                <a href="#about.html">About Us</a>
+                <a href="#terms.html">Terms of Service</a>
+                <a href="#privacy.html">Privacy Policy</a>
+                <a href="#faq.html">FAQ</a>
+            </nav>
+        </div>
+        
+        <!-- Resources Section -->
+        <div class="footer-resources">
+            <h4>Resources</h4>
+            <nav>
+                <a href="https://t.me/OAE_UNI_UPDATES/281">Study Materials</a>
+             <a href="https://t.me/OAECONNECT/150">Past Questions</a>
+                <a href="https://whatsapp.com/channel/0029VakYvdGBPzja0pE8OC3G">Online Classes</a>
+                <a href="https://t.me/OAECONNECT/653?single">Books for JAMB/WAEC</a>
+            </nav>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <nav>
+                <a href="#https://facebook.com/yourpage" target="_blank">Facebook</a>
+                <a href="https://x.com/oaeofficial123" target="_blank">Twitter</a>
+                <a href="https://instagram.com/oaeofficial123" target="_blank">Instagram</a>
+                <a href="https://youtube.com/@oaeofficial123" target="_blank">YouTube</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Footer Bottom (Copyright) -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 OAE CONNECTS. All Rights Reserved.</p>
+    </div>
+</footer>
+    <!-- Popup for WhatsApp Group -->
+    <div class="popup" id="whatsapp-popup">
+        <p>Join our OAE JAMB WhatsApp group for updates!</p>
+        <button onclick="window.location.href='https://www.whatsapp.com/channel/0029VakYvdGBPzja0pE8OC3G'">Join Now</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const groupSelect = document.getElementById('group');
+            const courseSelect = document.getElementById('course');
+
+            const courses = {
+                science: [
+                    'Agriculture', 'Anatomy', 'Animal Science', 'Applied Geophysics', 'Applied Zoology', 'Architecture',
+                    'Biochemistry', 'Biological Sciences', 'Biomedical Science', 'Botany', 'Chemical Engineering',
+                    'Chemistry', 'Civil Engineering', 'Computer Science', 'Dentistry', 'Earth Sciences', 'Ecology',
+                    'Electrical Engineering', 'Environmental Science', 'Fisheries', 'Forestry', 'Genetics', 'Geography',
+                    'Geology', 'Hydrology', 'Industrial Chemistry', 'Marine Biology', 'Mathematics', 'Mechanical Engineering',
+                    'Medical Laboratory Science', 'Medicine', 'Microbiology', 'Nursing', 'Optometry', 'Pharmacology',
+                    'Pharmacy', 'Physics', 'Physiology', 'Plant Science', 'Public Health', 'Radiography', 'Renewable Energy',
+                    'Statistics', 'Surveying', 'Urban and Regional Planning', 'Veterinary Medicine', 'Zoology',
+                    'Biotechnology', 'Environmental Engineering', 'Food Science', 'Agricultural Engineering', 'Biomedical Engineering',
+                    'Metallurgical Engineering', 'Petroleum Engineering', 'Industrial Physics', 'Industrial Mathematics',
+                    'Information Technology', 'Electronics Engineering', 'Astronomy', 'Meteorology', 'Space Science',
+                    'Astrophysics', 'Oceanography', 'Seismology', 'Mining Engineering', 'Robotics', 'Mechatronics',
+                    'System Engineering', 'Software Engineering', 'Nanotechnology', 'Cybersecurity', 'Genetic Engineering'
+                ],
+                art: [
+                    'Anthropology', 'Archaeology', 'Classical Studies', 'Communication and Language Arts', 'Creative Arts',
+                    'Drama', 'English Language', 'Fine Arts', 'French', 'German', 'History', 'International Studies',
+                    'Journalism', 'Languages and Linguistics', 'Law', 'Library Science', 'Literature', 'Mass Communication',
+                    'Music', 'Philosophy', 'Political Science', 'Psychology', 'Religious Studies', 'Sociology',
+                    'Theater Arts', 'Visual Arts', 'Yoruba', 'Igbo', 'Hausa', 'Arabic', 'Chinese', 'Korean', 'Japanese',
+                    'Russian', 'Italian', 'Portuguese', 'Spanish', 'Comparative Literature', 'Cultural Studies',
+                    'Ethics', 'Film Studies', 'Folklore', 'Gender Studies', 'Global Studies', 'Human Rights', 'Islamic Studies',
+                    'Jewish Studies', 'Liberal Studies', 'Linguistic Anthropology', 'Literary Theory', 'Medieval Studies',
+                    'Modern Languages', 'Peace and Conflict Studies', 'Postcolonial Studies', 'Semiotics', 'Visual Culture',
+                    'Women’s Studies', 'Postmodern Literature', 'Rhetoric', 'Translation Studies', 'World Literature',
+                    'Ethnomusicology', 'Interdisciplinary Studies', 'African Studies', 'American Studies', 'Asian Studies',
+                    'European Studies', 'Middle Eastern Studies', 'Oceanian Studies', 'Sub-Saharan African Studies'
+                ],
+                commercial: [
+                    'Accounting', 'Actuarial Science', 'Banking and Finance', 'Business Administration', 'Business Management',
+                    'Commerce', 'Economics', 'Entrepreneurship', 'Hospitality Management', 'Human Resource Management',
+                    'Industrial Relations', 'Insurance', 'International Business', 'Marketing', 'Office Technology Management',
+                    'Project Management', 'Public Administration', 'Real Estate Management', 'Risk Management',
+                    'Strategic Management', 'Supply Chain Management', 'Tourism Management', 'Transport and Logistics',
+                    'Advertising', 'E-Commerce', 'Business Law', 'Corporate Governance', 'Investment Management',
+                    'Financial Planning', 'Digital Marketing', 'Brand Management', 'Customer Relationship Management',
+                    'Event Management', 'Sports Management', 'Retail Management', 'Luxury Brand Management', 'Nonprofit Management',
+                    'Cooperative Economics', 'Labor Economics', 'Environmental Economics', 'Development Economics',
+                    'Agricultural Economics', 'Health Economics', 'Urban Economics', 'Economic Policy', 'Public Finance',
+                    'Banking Technology', 'Accounting Information Systems', 'International Finance', 'Microfinance',
+                    'Securities and Exchange', 'Financial Engineering', 'Wealth Management', 'Portfolio Management',
+                    'Taxation', 'Forensic Accounting', 'Management Consulting', 'Corporate Finance', 'Financial Reporting',
+                    'Audit and Assurance', 'Strategic Planning', 'Economic Modeling', 'Business Ethics', 'Corporate Social Responsibility'
+                ]
+            };
+
+            groupSelect.addEventListener('change', function() {
+                const selectedGroup = this.value;
+                courseSelect.innerHTML = '<option value="">Select Course</option>';
+                
+                if (selectedGroup) {
+                    courses[selectedGroup].forEach(course => {
+                        const option = document.createElement('option');
+                        option.value = course.toLowerCase().replace(/\s+/g, '-');
+                        option.textContent = course;
+                        courseSelect.appendChild(option);
+                    });
+                }
+            });
+        });
+
+        document.getElementById('student-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const group = document.getElementById('group').value;
+            const course = document.getElementById('course').value;
+            const email = document.getElementById('email').value;
+
+            document.getElementById('student-name').textContent = name;
+            document.getElementById('timetable-display').style.display = 'block';
+
+            let timetableData;
+            if (group === 'science') {
+                timetableData = [
+                    { time: '9:00 AM - 12:00 PM', subject: 'Physics', venue: 'General' },
+                    { time: '1:00 PM - 3:00 PM', subject: 'Chemistry', venue: 'General' },
+                    { time: '4:00 PM - 6:00 PM', subject: 'Biology', venue: 'General' },
+                    { time: '9:00 AM - 12:00 PM', subject: 'Mathematics', venue: 'General' },
+                    { time: '1:00 PM - 3:00 PM', subject: 'English Language', venue: 'General' }
+                ];
+            } else if (group === 'art') {
+                timetableData = [
+                    { time: '9:00 AM - 12:00 PM', subject: 'Literature', venue: 'Art' },
+                    { time: '1:00 PM - 3:00 PM', subject: 'History', venue: 'Art' },
+                    { time: '4:00 PM - 6:00 PM', subject: 'Philosophy', venue: 'Art' },
+                    { time: '9:00 AM - 12:00 PM', subject: 'Languages', venue: 'Art' },
+                    { time: '1:00 PM - 3:00 PM', subject: 'Theater Arts', venue: 'Art' }
+                ];
+            } else if (group === 'commercial') {
+                timetableData = [
+                    { time: '9:00 AM - 12:00 PM', subject: 'Accounting', venue: 'Commercial' },
+                    { time: '1:00 PM - 3:00 PM', subject: 'Business Administration', venue: 'Commercial' },
+                    { time: '4:00 PM - 6:00 PM', subject: 'Economics', venue: 'Commercial' },
+                    { time: '9:00 AM - 12:00 PM', subject: 'Marketing', venue: 'Commercial' },
+                    { time: '1:00 PM - 3:00 PM', subject: 'Banking & Finance', venue: 'Commercial' }
+                ];
+            }
+
+            const timetableBody = document.getElementById('timetable-body');
+            timetableBody.innerHTML = '';
+            timetableData.forEach(entry => {
+                const row = `<tr>
+                                <td>${entry.time}</td>
+                                <td>${entry.subject}</td>
+                                <td>${entry.venue}</td>
+                            </tr>`;
+                timetableBody.innerHTML += row;
+            });
+        });
+
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('whatsapp-popup').style.display = 'block';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
